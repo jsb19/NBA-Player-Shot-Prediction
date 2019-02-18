@@ -12,14 +12,14 @@ import seaborn as sns
 
 dataset = pd.read_csv('shot_data.csv')
 
-data_columns = ["action_type	", "combined_shot_type",	"game_event_id",	"game_id", 
+data_columns = ["action_type	", "combined_shot_type", "game_event_id",	"game_id", 
                 "lat","loc_x", "loc_y" ,"lon", "minutes_remaining", "period",
                 "playoffs", "season", "seconds_remaining", "shot_distance", 
                 "shot_made_flag","shot_type", "shot_zone_area", "shot_zone_basic",
                 "shot_zone_range", "team_id", "team_name", "game_date",
                 "matchup", "opponent", "shot_id"]
 
-keep_columns = ["action_type	", "combined_shot_type",	"game_event_id",	"game_id", 
+keep_columns = ["action_type	", "combined_shot_type",	"game_event_id", "game_id", 
                 "lat", "loc_x", "loc_y" ,"lon", "period", "playoffs", "season", 
                 "shot_distance", "shot_made_flag", "shot_zone_area", "opponent",
                 "shot_id"]
