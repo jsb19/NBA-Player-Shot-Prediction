@@ -148,16 +148,24 @@ draw_court(outer_lines=True)
 # Descending values along the axis from left to right
 plt.xlim(300,-300)
 plt.ylim(-100,400)
-plt.show()
         
 # Comparing test results with actual results
-
-count = 0
-for shot in X_test[0]:
-    if(shot in dataset["game_event_id"].values):
-        count = count + 1   
-        #if(pred != dataset["shot_made_flag"].values):
-            #print(X_test[0])
-            #print(dataset["game_event_id"].values)
+X_actual = dataset.loc[dataset['shot_id'].isin(X_test[:, 10])]
+for i in range(len(X_test[:, 10])):
+    for shot in X_actual["shot_id"]:
+        if(X_test[i, 10] == shot):
+            temp = X_actual.loc[X_actual['shot_id'] == shot]
+            if(pred[i] != temp["shot_made_flag"].values):
+                c = 'red'
+            else:
+                c = 'green'
+            plt.figure(2)
+            plt.scatter(X_test[i, 3], X_test[i, 4], color=c)
             
-print(count)
+draw_court(outer_lines=True)
+# Descending values along the axis from left to right
+plt.xlim(300,-300)
+plt.ylim(-100,400)
+plt.title("Plot of Predicted Shot Results")            
+plt.show()
+           
