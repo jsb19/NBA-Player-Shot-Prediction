@@ -55,10 +55,10 @@ X = dataset.values
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=.2, random_state = 0)
 
-#Build Decision Tree regression model to fit to dataset
-from sklearn.tree import DecisionTreeRegressor
-regressor = DecisionTreeRegressor(random_state = 0)
-regressor.fit(X_train,y_train)
+# Build Random Forest regression model to fit to dataset
+from sklearn.ensemble import RandomForestRegressor
+regressor = RandomForestRegressor(n_estimators = 100)
+regressor.fit(X_train, y_train)
 
 #Predicting a new result
 pred = regressor.predict(X_test)
