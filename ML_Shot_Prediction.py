@@ -63,6 +63,16 @@ regressor.fit(X_train, y_train)
 #Predicting a new result
 pred = regressor.predict(X_test)
 
+# Plotting made and missed shots 
+def shot_map(dataframe):
+    for i in range(len(dataframe["shot_made_flag"])):
+        if(dataframe["shot_made_flag"].iloc[i] == 0):
+            color = 'red'
+        else:
+            color = 'green'
+        plt.figure(3)
+        plt.scatter(dataframe["loc_x"].iloc[i], dataframe["loc_y"].iloc[i], color=color)
+
 def draw_court(ax=None, color='black', lw=2, outer_lines=False):
     from matplotlib.patches import Circle, Rectangle, Arc 
     # If an axes object isn't provided to plot onto, just get current one
@@ -167,5 +177,10 @@ draw_court(outer_lines=True)
 plt.xlim(300,-300)
 plt.ylim(-100,400)
 plt.title("Plot of Predicted Shot Results")            
+
+shot_map(dataset)
+plt.title("Made vs Missed Shots") 
+draw_court(outer_lines=True)
+plt.xlim(300,-300)
+plt.ylim(-100,400)        
 plt.show()
-           
